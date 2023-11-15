@@ -14,9 +14,6 @@ import { proforma } from '@/model/proforma.model';
 })
 export class ApiService {
   [x: string]: any;
-  
- 
-  
    
     
     originList: article[]=[
@@ -303,14 +300,20 @@ export class ApiService {
 
     ]
     
-
-
+url="http://127.0.0.1:8000/api/stock/"
+  
     constructor(private http: HttpClient) {}
 
 
     getArticle(): article[]{
+        this.http.get(this.url + 'articles').subscribe(
+           data => {
+            console.log('article : ',data);
+           }
+        )
         return this.originList;
     }
+
     getClient(): client[]{
         return this.origineList;
     }
@@ -378,6 +381,17 @@ export class ApiService {
         return idMAx +1;
       }
 
+    private getIdCmdFns():number{
+        let idMAx = 0;
+        this.origigigi.forEach(commandeFournisseur =>{
+            if(commandeFournisseur.id && commandeFournisseur.id > idMAx){
+              idMAx = commandeFournisseur.id;
+            }
+          });
+
+        return idMAx +1;
+      }
+
 
     addClient(client: client):void{
         client.id = this.getId();
@@ -398,6 +412,13 @@ export class ApiService {
         commandeClient.id = this.getIdCmdClient();
         this.origigigigi.push(commandeClient);
        }
+
+     addCmdFns(commandeFournisseur: commandeFournisseur):void{
+        commandeFournisseur.id = this.getIdCmdFns();
+        this.origigigi.push(commandeFournisseur);
+       }
+
+
 
 
 

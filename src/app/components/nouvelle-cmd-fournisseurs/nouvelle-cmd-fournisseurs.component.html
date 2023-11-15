@@ -31,59 +31,73 @@
             <h2><i class="fas fa-info-circle blue-color"></i>&nbsp; Information du bon de commande</h2>
         </div>
         <div class="col-md-12">
-            <form>
+            <form (ngSubmit)="saveClick()" [formGroup]="CmdFournisseurForm">
                 <div class="row mb-3">
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="Fournisseur">
+                        <input type="text" class="form-control" placeholder="Fournisseur" formControlName="fournisseur">
                     </div>
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="Date">
+                        <input type="text" class="form-control" placeholder="Date" formControlName="createAt">
                     </div>
                 </div>
                 <div class="row mb-3">
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="Numéro pièce">
+                        <input type="text" class="form-control" placeholder="Numéro ou référence de pièce" formControlName="refPiece">
                     </div>
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="Type pièce">
+                        <input type="text" class="form-control" placeholder="Type pièce" formControlName="typePiece">
                     </div>
                 </div>
                 <div class="row mb-3">
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="Frais de transport">
+                        <input type="text" class="form-control" placeholder="Frais de transport" formControlName="fraisTransport">
                     </div>
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="Remise">
+                        <input type="text" class="form-control" placeholder="Article" formControlName="article">
                     </div>
                 </div>
                
                 <div class="row mb-3">
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="Remise">
+                        <input type="text" class="form-control" placeholder="Remise" formControlName="remise">
                     </div>
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="Total remise">
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="Total BIC">
-                    </div>
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="Total HT">
+                        <input type="text" class="form-control" placeholder="Total remise" formControlName="totalRemise">
                     </div>
                 </div>
                 <div class="row mb-3">
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="Total TVA">
+                        <input type="text" class="form-control" placeholder="Total BIC" formControlName="totalBIC">
                     </div>
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="Total TTC">
+                        <input type="text" class="form-control" placeholder="Total HT" formControlName="totalHT">
                     </div>
                 </div>
                 <div class="row mb-3">
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="Net à payer">
+                        <input type="text" class="form-control" placeholder="Total TVA" formControlName="totalTVA">
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Total TTC" formControlName="totalTTC">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Net à payer" formControlName="netAPayer">
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="col-md-12 text-center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button class="btn btn-danger mr-3" (click)="cancelClick()">
+                            <i class="fas fa-ban"></i>&nbsp;
+                            Annuler
+                        </button>&nbsp;&nbsp;&nbsp;
+                        <button class="btn btn-primary"type="submit">
+                            <i class="fas fa-save"></i>
+                            Enregistrer  
+                        </button>
                     </div>
                 </div>
             </form>
@@ -94,20 +108,7 @@
 </div>
 
 <!-- /.card-body -->
-<div class="card-footer">
-    <div class="col-md-12 text-center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <button class="btn btn-danger mr-3" (click)="cancelClick()">
-            <i class="fas fa-ban"></i>&nbsp;
-            Annuler
-        </button>&nbsp;&nbsp;&nbsp;
-        <button class="btn btn-primary" (click)="saveClick()">
-            <i class="fas fa-save"></i>
-            Enregistrer  
-        </button>
-    </div>
-</div>
+
 <!-- /.card-footer-->
 </div>
 </div>
